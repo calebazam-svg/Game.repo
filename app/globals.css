@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #0b1120;
+  color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Prevent text selection / callout flicker while dragging the aim or power UI. */
+.no-touch-callout {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold transition-transform active:scale-95 disabled:opacity-50 disabled:active:scale-100;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-slate-950 shadow-glow hover:bg-brand-light;
+  }
+  .btn-secondary {
+    @apply btn bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20;
+  }
+  .panel {
+    @apply rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur;
+  }
+}
