@@ -1,11 +1,9 @@
 "use client";
 
 import * as THREE from "three";
-import { useRef, MutableRefObject } from "react";
+import { useRef, type ComponentRef, type MutableRefObject } from "react";
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type OrbitControlsImpl = any;
 
 interface CameraRigProps {
   ballPosRef: MutableRefObject<THREE.Vector3>;
@@ -16,7 +14,7 @@ interface CameraRigProps {
  * while the user retains full orbit/zoom control.
  */
 export function CameraRig({ ballPosRef }: CameraRigProps) {
-  const controls = useRef<OrbitControlsImpl>(null);
+  const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
 
   useFrame(() => {
     if (!controls.current) return;
